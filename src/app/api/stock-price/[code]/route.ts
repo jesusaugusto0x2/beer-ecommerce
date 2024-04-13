@@ -1,6 +1,6 @@
-import { StockPrice } from "@/app/models/stock-price";
+import { StockPrice } from "@/models/stock-price";
 import { NextResponse, NextRequest } from "next/server";
-import StockPriceData from "@/app/data/stock-price";
+import StockPriceData from "@/data/stock-price";
 
 export async function GET(
   request: NextRequest,

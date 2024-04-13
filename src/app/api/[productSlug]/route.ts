@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-import ProductsData from "@/app/data/products";
-import { Product } from "@/app/models/product";
+import ProductsData from "@/data/products";
+import { Product } from "@/models/product";
 
 export async function GET(
   request: NextRequest,
@@ -9,8 +9,6 @@ export async function GET(
   const [productId, ...pieces] = params.productSlug.split("-");
   const id = Number(productId);
   const brand = pieces.join(" ");
-
-  console.log({ id, brand });
 
   const product = (ProductsData as Product[]).find(
     (product) => product.id === id && product.brand.toLowerCase() === brand
