@@ -1,7 +1,24 @@
+@import "@/styles/variables.scss";
+
 .Products {
   display: flex;
   flex-direction: column;
   padding: 24px;
+
+  .titleWrapper {
+    h1 {
+      color: $dark-color;
+      font-size: $fs-xlarge;
+      line-height: 31.25px;
+      margin: 0;
+    }
+
+    h2 {
+      color: $secondary-color;
+      font-weight: $fw-light;
+      line-height: 20.83px;
+    }
+  }
 
   .inputStyle {
     width: 100%;
