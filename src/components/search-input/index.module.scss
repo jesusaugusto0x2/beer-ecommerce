@@ -1,0 +1,27 @@
+@import "@/styles/variables.scss";
+
+.SearchInputWrapper {
+  svg {
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 12px;
+  }
+
+  input {
+    background-color: #fff;
+    border: none;
+    padding: 16px 16px 16px 42px;
+    border-radius: 12px;
+    font-size: $fs-small;
+    color: $dark-color;
+    font-weight: $fw-light;
+
+    &::focus-visible {
+      border: none !important;
+    }
+
+    &::placeholder {
+      color: #c4c4c4;
+    }
+  }
+}

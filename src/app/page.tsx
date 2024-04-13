@@ -2,10 +2,9 @@
 
 import { fetcher } from "@/api";
 import { Product } from "@/models/product";
-import { Button, NavBar } from "@/components";
+import { Avatar, Button, NavBar, SearchInput } from "@/components";
 import { DotsIcon, LeftArrowIcon } from "@/assets";
 import useSWR from "swr";
-import { Avatar } from "@/components/avatar";
 
 export default function Products() {
   const { error, isLoading } = useSWR<Product[]>("/api/products", fetcher);
@@ -32,6 +31,7 @@ export default function Products() {
         height={40}
       />
       <Button text="Test Button!" />
+      <SearchInput placeholder="Hola?" />
     </main>
   );
 }
