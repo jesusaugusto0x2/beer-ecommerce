@@ -18,7 +18,7 @@ export default function Products() {
 
   return (
     <main>
-      <Button />
+      <Button text="Test Button!" />
     </main>
   );
 }
