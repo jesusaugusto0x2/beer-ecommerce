@@ -1,0 +1,20 @@
+@import "@/styles/variables.scss";
+
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  width: 100%;
+
+  button {
+    padding: 8px;
+  }
+
+  h1 {
+    color: $dark-color;
+    font-size: $fs-nav-title;
+    font-weight: $fw-bold;
+    margin: 0;
+  }
+}
