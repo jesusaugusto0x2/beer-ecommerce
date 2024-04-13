@@ -5,9 +5,11 @@ import {
   NavBar,
   SectionHeader,
   SearchInput,
+  ButtonGroup,
 } from "@/components";
 import { MenuIcon } from "@/assets";
 import styles from "./index.module.scss";
+import { DRINK_CATEGORIES } from "@/consts";
 
 export const Products: FC = () => (
   <section className={styles.Products}>
@@ -30,8 +32,12 @@ export const Products: FC = () => (
       placeholder="Search burger, pizza, drink or ect..."
       className={styles.inputStyle}
     />
-    <div>
+    <div className={styles.subSection}>
       <SectionHeader title="Drink Category" />
+      <ButtonGroup items={DRINK_CATEGORIES} />
+    </div>
+    <div className={styles.subSection}>
+      <SectionHeader title="Populer" />
     </div>
   </section>
 );

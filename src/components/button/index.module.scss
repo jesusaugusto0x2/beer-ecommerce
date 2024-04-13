@@ -8,6 +8,10 @@
   font-size: $fs-medium;
   line-height: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-weight: $fw-medium;
 
   &.primary {
     background-color: $primary-color;
@@ -17,5 +21,9 @@
   &.default {
     background-color: #fff;
     color: #000;
+  }
+
+  &:hover {
+    filter: brightness(0.925);
   }
 }

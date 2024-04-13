@@ -12,13 +12,13 @@ export const SearchIcon = () => (
         cy="11.0647"
         r="6.31471"
         stroke="#0F0D23"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         d="M16.0924 15.8441L19 18.6466"
         stroke="#0F0D23"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </g>
   </svg>
