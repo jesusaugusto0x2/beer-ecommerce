@@ -1,0 +1,23 @@
+@import "@/styles/variables.scss";
+
+.SectionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  p {
+    font-size: $fs-large;
+    font-weight: $fw-bold;
+    color: $dark-color;
+    margin: 0;
+    line-height: 23.44px;
+  }
+
+  span {
+    color: $secondary-color;
+    font-size: $fs-small;
+    font-weight: $fw-light;
+    line-height: 14px;
+  }
+}

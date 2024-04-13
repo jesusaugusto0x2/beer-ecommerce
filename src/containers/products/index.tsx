@@ -1,5 +1,11 @@
 import { FC } from "react";
-import { Avatar, Button, NavBar, SearchInput } from "@/components";
+import {
+  Avatar,
+  Button,
+  NavBar,
+  SectionHeader,
+  SearchInput,
+} from "@/components";
 import { MenuIcon } from "@/assets";
 import styles from "./index.module.scss";
 
@@ -24,5 +30,8 @@ export const Products: FC = () => (
       placeholder="Search burger, pizza, drink or ect..."
       className={styles.inputStyle}
     />
+    <div>
+      <SectionHeader title="Drink Category" />
+    </div>
   </section>
 );
