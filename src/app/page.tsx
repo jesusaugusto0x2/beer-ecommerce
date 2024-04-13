@@ -2,11 +2,10 @@
 
 import { fetcher } from "@/api";
 import { Product } from "@/models/product";
-import { Avatar, Button, NavBar, SearchInput } from "@/components";
-import { DotsIcon, LeftArrowIcon } from "@/assets";
+import { Products } from "@/containers";
 import useSWR from "swr";
 
-export default function Products() {
+export default function Home() {
   const { error, isLoading } = useSWR<Product[]>("/api/products", fetcher);
 
   if (error) {
@@ -19,19 +18,7 @@ export default function Products() {
 
   return (
     <main>
-      <NavBar
-        leftItem={<Button variant="default" icon={<LeftArrowIcon />} />}
-        rightItem={<Button variant="default" icon={<DotsIcon />} />}
-        title="Test Title"
-      />
-      <Avatar
-        src="/img/default-user.jpg"
-        alt="user_avatar"
-        width={40}
-        height={40}
-      />
-      <Button text="Test Button!" />
-      <SearchInput placeholder="Hola?" />
+      <Products />
     </main>
   );
 }
