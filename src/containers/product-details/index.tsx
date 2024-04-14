@@ -2,6 +2,7 @@ import { BagIcon, DotsIcon, LeftArrowIcon } from "@/assets";
 import {
   Button,
   ExpandableText,
+  Img,
   NavBar,
   SectionHeader,
   TagGroup,
@@ -9,8 +10,8 @@ import {
 import { FC } from "react";
 import { useParams } from "next/navigation";
 import { ProductUtils } from "@/utils";
-import Image from "next/image";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 export const ProductDetails: FC = () => {
   const { productId } = useParams();
@@ -23,11 +24,15 @@ export const ProductDetails: FC = () => {
   return (
     <section className={styles.ProductDetails}>
       <NavBar
-        leftItem={<Button variant="default" icon={<LeftArrowIcon />} />}
+        leftItem={
+          <Link href="/" passHref>
+            <Button variant="default" icon={<LeftArrowIcon />} />
+          </Link>
+        }
         rightItem={<Button variant="default" icon={<DotsIcon />} />}
         title="Detail"
       />
-      <Image src={product.image} width={240} height={240} alt={product.image} />
+      <Img src={product.image} width={240} height={240} alt={product.image} />
       <div className={styles.description}>
         <div className={styles.titleSection}>
           <p>

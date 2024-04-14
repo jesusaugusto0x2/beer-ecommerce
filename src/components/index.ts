@@ -8,3 +8,4 @@ export * from "./product-box";
 export * from "./tag";
 export * from "./tag-group";
 export * from "./expandable-text";
+export * from "./img";

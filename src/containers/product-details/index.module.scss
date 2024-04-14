@@ -74,9 +74,17 @@
       bottom: 0;
       display: flex;
       justify-content: space-between;
+      gap: 24px;
+      margin-top: auto;
 
       button:first-child {
         border: 1px solid $primary-color;
+      }
+
+      button:last-child {
+        width: 100%;
+        justify-content: center;
+        max-width: 320px;
       }
     }
   }
