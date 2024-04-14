@@ -1,5 +1,5 @@
 import { DotsIcon, LeftArrowIcon } from "@/assets";
-import { Button, NavBar, SectionHeader, Tag } from "@/components";
+import { Button, NavBar, SectionHeader, Tag, TagGroup } from "@/components";
 import { FC } from "react";
 import { useParams } from "next/navigation";
 import { ProductUtils } from "@/utils";
@@ -8,7 +8,6 @@ import styles from "./index.module.scss";
 
 export const ProductDetails: FC = () => {
   const { productId } = useParams();
-
   const product = ProductUtils.getProductById(productId as string);
 
   if (!product) {
@@ -42,7 +41,10 @@ export const ProductDetails: FC = () => {
         </div>
         <div className={styles.subSection}>
           <SectionHeader title="Size" className={styles.subSectionTitle} />
-          <Tag text="sex" variant="active" />
+          <TagGroup
+            items={ProductUtils.parseSkuToTagItem(product.skus)}
+            onChange={(item) => console.log(item)}
+          />
         </div>
       </div>
     </section>
