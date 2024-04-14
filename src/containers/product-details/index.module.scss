@@ -62,6 +62,12 @@
           font-size: 16px;
         }
       }
+
+      .infoText {
+        color: $light-gray-color;
+        font-size: $fs-small;
+        line-height: 24px;
+      }
     }
 
     .options {

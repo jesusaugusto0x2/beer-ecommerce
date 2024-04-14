@@ -1,0 +1,21 @@
+@import "@/styles/variables";
+
+.clampedText {
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
+
+.noMargin {
+  margin: 0;
+}
+
+.toggle {
+  color: $primary-color;
+  font-weight: $fw-bold;
+  position: relative;
+  top: -10px;
+}

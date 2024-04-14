@@ -1,5 +1,11 @@
 import { BagIcon, DotsIcon, LeftArrowIcon } from "@/assets";
-import { Button, NavBar, SectionHeader, Tag, TagGroup } from "@/components";
+import {
+  Button,
+  ExpandableText,
+  NavBar,
+  SectionHeader,
+  TagGroup,
+} from "@/components";
 import { FC } from "react";
 import { useParams } from "next/navigation";
 import { ProductUtils } from "@/utils";
@@ -37,7 +43,10 @@ export const ProductDetails: FC = () => {
             title="Description"
             className={styles.subSectionTitle}
           />
-          <p>{product.information}</p>
+          <ExpandableText
+            className={styles.infoText}
+            text={product.information}
+          />
         </div>
         <div className={styles.subSection}>
           <SectionHeader title="Size" className={styles.subSectionTitle} />
