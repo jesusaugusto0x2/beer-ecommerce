@@ -1,5 +1,5 @@
 import { DotsIcon, LeftArrowIcon } from "@/assets";
-import { Button, NavBar, SectionHeader } from "@/components";
+import { Button, NavBar, SectionHeader, Tag } from "@/components";
 import { FC } from "react";
 import { useParams } from "next/navigation";
 import { ProductUtils } from "@/utils";
@@ -42,6 +42,7 @@ export const ProductDetails: FC = () => {
         </div>
         <div className={styles.subSection}>
           <SectionHeader title="Size" className={styles.subSectionTitle} />
+          <Tag text="sex" variant="active" />
         </div>
       </div>
     </section>
