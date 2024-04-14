@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Product } from "@/models/product";
 import Image from "next/image";
 import { Button } from "../button";
@@ -9,13 +9,23 @@ type Props = {
   product: Product;
 };
 
-export const ProductBox: FC<Props> = ({ product }) => (
-  <div className={styles.ProductBox}>
-    <h3>{product.brand}</h3>
-    <Image src={product.image} alt={product.abv} width={116} height={122} />
-    <div className={styles.lowerSection}>
-      <p>$28.65</p>
-      <Button icon={<PlusWhiteIcon />} />
+export const ProductBox: FC<Props> = ({ product }) => {
+  const [imageSrc, setImageSrc] = useState(product.image);
+
+  return (
+    <div className={styles.ProductBox}>
+      <h3>{product.brand}</h3>
+      <Image
+        src={imageSrc}
+        alt={product.image}
+        width={116}
+        height={122}
+        onError={() => setImageSrc("/img/unavailable.jpg")}
+      />
+      <div className={styles.lowerSection}>
+        <p>$28.65</p>
+        <Button icon={<PlusWhiteIcon />} />
+      </div>
     </div>
-  </div>
-);
+  );
+};

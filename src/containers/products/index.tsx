@@ -12,6 +12,7 @@ import { MenuIcon } from "@/assets";
 import { DRINK_CATEGORIES } from "@/consts";
 import styles from "./index.module.scss";
 import ProductData from "@/data/products";
+import { ProductList } from "../product-list";
 
 export const Products: FC = () => (
   <section className={styles.Products}>
@@ -40,7 +41,7 @@ export const Products: FC = () => (
     </div>
     <div className={styles.subSection}>
       <SectionHeader title="Populer" />
-      <ProductBox product={ProductData[0]} />
+      <ProductList />
     </div>
   </section>
 );
