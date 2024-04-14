@@ -1,0 +1,38 @@
+@import "@/styles/variables.scss";
+
+.ProductBox {
+  display: grid;
+  border-radius: 12px;
+  background-color: #fff;
+  row-gap: 6px;
+
+  h3,
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 16px;
+    font-size: $fs-medium;
+    color: $dark-color;
+    font-weight: $fw-medium;
+    line-height: 16px;
+  }
+
+  h3 {
+    margin-top: 16px;
+  }
+
+  img {
+    justify-self: center;
+  }
+
+  .lowerSection {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+
+    button {
+      border-radius: 8px 0px 8px 0px;
+    }
+  }
+}

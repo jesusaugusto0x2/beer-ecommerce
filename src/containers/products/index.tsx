@@ -6,10 +6,12 @@ import {
   SectionHeader,
   SearchInput,
   ButtonGroup,
+  ProductBox,
 } from "@/components";
 import { MenuIcon } from "@/assets";
-import styles from "./index.module.scss";
 import { DRINK_CATEGORIES } from "@/consts";
+import styles from "./index.module.scss";
+import ProductData from "@/data/products";
 
 export const Products: FC = () => (
   <section className={styles.Products}>
@@ -38,6 +40,7 @@ export const Products: FC = () => (
     </div>
     <div className={styles.subSection}>
       <SectionHeader title="Populer" />
+      <ProductBox product={ProductData[0]} />
     </div>
   </section>
 );
