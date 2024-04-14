@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "../button";
 import { PlusWhiteIcon } from "@/assets";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 type Props = {
   product: Product;
@@ -24,7 +25,9 @@ export const ProductBox: FC<Props> = ({ product }) => {
       />
       <div className={styles.lowerSection}>
         <p>$28.65</p>
-        <Button icon={<PlusWhiteIcon />} />
+        <Link passHref href={`/products/${product.id}`}>
+          <Button icon={<PlusWhiteIcon />} />
+        </Link>
       </div>
     </div>
   );

@@ -34,11 +34,11 @@ export const Products: FC = () => (
       className={styles.inputStyle}
     />
     <div className={styles.subSection}>
-      <SectionHeader title="Drink Category" />
+      <SectionHeader title="Drink Category" actionTitle="See All" />
       <ButtonGroup items={DRINK_CATEGORIES} />
     </div>
     <div className={styles.subSection}>
-      <SectionHeader title="Populer" />
+      <SectionHeader title="Populer" actionTitle="See All" />
       <ProductList />
     </div>
   </section>

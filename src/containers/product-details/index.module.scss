@@ -1,0 +1,66 @@
+@import "@/styles/variables.scss";
+
+.ProductDetails {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  nav {
+    margin: 24px;
+  }
+
+  img {
+    margin: 0 auto;
+    margin-bottom: 24px;
+    border-radius: 24px;
+  }
+
+  .description {
+    padding: 48px 24px 0;
+    border-radius: 48px 48px 0 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    flex: 1;
+
+    .titleSection {
+      p {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: $fs-xlarge;
+        font-weight: $fw-bold;
+        line-height: 31.25px;
+
+        span:first-child {
+          color: $dark-color;
+        }
+
+        span:last-child {
+          color: $primary-color;
+        }
+      }
+
+      small {
+        font-size: $fs-small;
+        color: $secondary-color;
+        font-weight: $fw-light;
+        line-height: 18.23px;
+      }
+    }
+
+    .subSection {
+      display: flex;
+      flex-direction: column;
+      row-gap: 12px;
+
+      &Title {
+        p:first-child {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
