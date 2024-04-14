@@ -1,4 +1,3 @@
-import { StockPrice } from "@/models/stock-price";
 import { NextResponse, NextRequest } from "next/server";
 import StockPriceData from "@/data/stock-price";
 
@@ -7,7 +6,7 @@ export async function GET(
   { params }: { params: { code: string } }
 ) {
   const code = Number(params.code);
-  const stockPrice = (StockPriceData as unknown as StockPrice)[code];
+  const stockPrice = (StockPriceData as { [key: number]: {} })[code];
 
   if (!stockPrice) {
     return NextResponse.json(

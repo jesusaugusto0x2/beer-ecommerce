@@ -7,13 +7,15 @@ import {
   SectionHeader,
   TagGroup,
 } from "@/components";
-import { ComponentProps, FC, useMemo, useState } from "react";
+import { ComponentProps, FC, useState } from "react";
 import { useParams } from "next/navigation";
 import { CurrencyUtils, ProductUtils } from "@/utils";
-import { StockPrice } from "@/models";
+import { StockPriceResponse } from "@/models";
+import { fetcher } from "@/api";
+import useSWR from "swr";
+import { ENDPOINTS, REFRESH_INTERVAL } from "@/consts/api";
 import Link from "next/link";
 import styles from "./index.module.scss";
-import StockPriceData from "@/data/stock-price";
 
 type TagItem = ComponentProps<typeof TagGroup>["items"][0];
 
@@ -24,12 +26,13 @@ export const ProductDetails: FC = () => {
     ProductUtils.parseSkuToTagItem(product?.skus?.at(0))
   );
 
-  const selectedStock = useMemo(() => {
-    const stock = (StockPriceData as unknown as StockPrice)[
-      Number(selectedSkuItem.value)
-    ];
-    return stock;
-  }, [selectedSkuItem]);
+  const { data } = useSWR<StockPriceResponse>(
+    ENDPOINTS.stockPrice.replace("{id}", selectedSkuItem.value),
+    fetcher,
+    {
+      refreshInterval: REFRESH_INTERVAL,
+    }
+  );
 
   if (!product) {
     return <section>Product not found!</section>;
@@ -52,11 +55,11 @@ export const ProductDetails: FC = () => {
           <p>
             <span>{product.brand}</span>
             <span>
-              {CurrencyUtils.parseCentsToDollars(selectedStock.price)}
+              {CurrencyUtils.parseCentsToDollars(data?.stockPrice?.price)}
             </span>
           </p>
           <small>
-            Origin: {product.origin} | Stock: {selectedStock.stock}
+            Origin: {product.origin} | Stock: {data?.stockPrice?.stock}
           </small>
         </div>
         <div className={styles.subSection}>

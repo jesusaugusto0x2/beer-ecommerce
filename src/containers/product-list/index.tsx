@@ -2,6 +2,7 @@ import { fetcher } from "@/api";
 import { FC } from "react";
 import { ProductBox } from "@/components";
 import { ProductListResponse } from "@/models/api";
+import { ENDPOINTS } from "@/consts/api";
 import useSWR from "swr";
 import styles from "./index.module.scss";
 
@@ -10,7 +11,7 @@ export const ProductList: FC = () => {
     data: response,
     error,
     isLoading,
-  } = useSWR<ProductListResponse>("/api/products", fetcher);
+  } = useSWR<ProductListResponse>(ENDPOINTS.productList, fetcher);
 
   if (error) {
     return <div>Error has ocurred!</div>;
