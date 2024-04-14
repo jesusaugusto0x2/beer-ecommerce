@@ -6,12 +6,10 @@ import {
   SectionHeader,
   SearchInput,
   ButtonGroup,
-  ProductBox,
 } from "@/components";
 import { MenuIcon } from "@/assets";
 import { DRINK_CATEGORIES } from "@/consts";
 import styles from "./index.module.scss";
-import ProductData from "@/data/products";
 import { ProductList } from "../product-list";
 
 export const Products: FC = () => (
