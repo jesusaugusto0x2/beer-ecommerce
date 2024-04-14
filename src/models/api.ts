@@ -8,3 +8,7 @@ export type ProductListResponse = {
 export type StockPriceResponse = {
   stockPrice: StockPrice;
 };
+
+export type ProductResponse = {
+  product: Product;
+};
