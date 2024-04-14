@@ -9,21 +9,19 @@ type TagItem = {
 
 type Props = {
   items: TagItem[];
+  selectedItem: TagItem;
   onChange?: (tag: TagItem) => void;
 };
 
-export const TagGroup: FC<Props> = ({ items, onChange }) => {
-  const [selected, setSelected] = useState<TagItem>();
-
+export const TagGroup: FC<Props> = ({ items, selectedItem, onChange }) => {
   return (
     <ul className={styles.TagGroup}>
       {items.map((item) => (
         <li key={item.value}>
           <Tag
             text={item.label}
-            variant={selected?.value === item.value ? "active" : "default"}
+            variant={selectedItem?.value === item.value ? "active" : "default"}
             onClick={() => {
-              setSelected(item);
               onChange?.(item);
             }}
           />

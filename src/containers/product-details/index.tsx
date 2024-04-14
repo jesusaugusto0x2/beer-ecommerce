@@ -7,15 +7,29 @@ import {
   SectionHeader,
   TagGroup,
 } from "@/components";
-import { FC } from "react";
+import { ComponentProps, FC, useMemo, useState } from "react";
 import { useParams } from "next/navigation";
-import { ProductUtils } from "@/utils";
-import styles from "./index.module.scss";
+import { CurrencyUtils, ProductUtils } from "@/utils";
+import { StockPrice } from "@/models";
 import Link from "next/link";
+import styles from "./index.module.scss";
+import StockPriceData from "@/data/stock-price";
+
+type TagItem = ComponentProps<typeof TagGroup>["items"][0];
 
 export const ProductDetails: FC = () => {
   const { productId } = useParams();
   const product = ProductUtils.getProductById(productId as string);
+  const [selectedSkuItem, setSelectedSkuItem] = useState<TagItem>(
+    ProductUtils.parseSkuToTagItem(product?.skus?.at(0))
+  );
+
+  const selectedStock = useMemo(() => {
+    const stock = (StockPriceData as unknown as StockPrice)[
+      Number(selectedSkuItem.value)
+    ];
+    return stock;
+  }, [selectedSkuItem]);
 
   if (!product) {
     return <section>Product not found!</section>;
@@ -37,10 +51,12 @@ export const ProductDetails: FC = () => {
         <div className={styles.titleSection}>
           <p>
             <span>{product.brand}</span>
-            <span>$26.60</span>
+            <span>
+              {CurrencyUtils.parseCentsToDollars(selectedStock.price)}
+            </span>
           </p>
           <small>
-            Origin: {product.origin} | Stock: {product.skus.length}
+            Origin: {product.origin} | Stock: {selectedStock.stock}
           </small>
         </div>
         <div className={styles.subSection}>
@@ -56,8 +72,9 @@ export const ProductDetails: FC = () => {
         <div className={styles.subSection}>
           <SectionHeader title="Size" className={styles.subSectionTitle} />
           <TagGroup
-            items={ProductUtils.parseSkuToTagItem(product.skus)}
-            onChange={(item) => console.log(item)}
+            items={ProductUtils.parseSkuArrayToTagItems(product.skus)}
+            selectedItem={selectedSkuItem}
+            onChange={(item) => setSelectedSkuItem(item)}
           />
         </div>
         <div className={styles.options}>

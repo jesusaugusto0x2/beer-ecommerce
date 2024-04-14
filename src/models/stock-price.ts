@@ -1,3 +1,6 @@
-import { ProductSKU } from "./product";
-
-export type StockPrice = { [key: number]: ProductSKU };
+export type StockPrice = {
+  [key: number]: {
+    stock: number;
+    price: number;
+  };
+};
