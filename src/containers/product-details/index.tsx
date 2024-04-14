@@ -1,4 +1,4 @@
-import { DotsIcon, LeftArrowIcon } from "@/assets";
+import { BagIcon, DotsIcon, LeftArrowIcon } from "@/assets";
 import { Button, NavBar, SectionHeader, Tag, TagGroup } from "@/components";
 import { FC } from "react";
 import { useParams } from "next/navigation";
@@ -45,6 +45,10 @@ export const ProductDetails: FC = () => {
             items={ProductUtils.parseSkuToTagItem(product.skus)}
             onChange={(item) => console.log(item)}
           />
+        </div>
+        <div className={styles.options}>
+          <Button icon={<BagIcon />} variant="default" />
+          <Button text="Add to cart" />
         </div>
       </div>
     </section>
