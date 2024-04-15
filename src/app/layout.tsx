@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import styles from "./layout.module.scss";
 import cx from "classnames";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Beer e-commerce",
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cx(inter.className, styles.Layout)}>{children}</body>
+      <body className={cx(dmSans.className, styles.Layout)}>{children}</body>
     </html>
   );
 }
