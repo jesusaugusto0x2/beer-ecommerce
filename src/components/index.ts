@@ -9,3 +9,4 @@ export * from "./tag";
 export * from "./tag-group";
 export * from "./expandable-text";
 export * from "./img";
+export * from "./footer";

@@ -4,3 +4,7 @@ export * from "./icons/search";
 export * from "./icons/menu";
 export * from "./icons/plus-white";
 export * from "./icons/bag";
+export * from "./icons/home-selected";
+export * from "./icons/menu-button";
+export * from "./icons/settings";
+export * from "./icons/bag-button";

@@ -6,6 +6,7 @@ import {
   SectionHeader,
   SearchInput,
   ButtonGroup,
+  Footer,
 } from "@/components";
 import { MenuIcon } from "@/assets";
 import { DRINK_CATEGORIES } from "@/consts";
@@ -51,6 +52,7 @@ export const Products: FC = () => {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 };
