@@ -26,7 +26,11 @@ export const ProductDetails: FC = () => {
   const productUrl = ProductUtils.generateProductEndpoint(productId as string);
   const [selectedSkuItem, setSelectedSkuItem] = useState<TagItem>();
 
-  const { data: productData } = useSWR<ProductResponse>(productUrl, fetcher);
+  const {
+    data: productData,
+    isLoading: isLoadingProductData,
+    error,
+  } = useSWR<ProductResponse>(productUrl, fetcher);
 
   const { data: stockData } = useSWR<StockPriceResponse>(
     !selectedSkuItem
@@ -48,8 +52,23 @@ export const ProductDetails: FC = () => {
     );
   }, [productData]);
 
-  if (!productData) {
-    return <section>Product not found!</section>;
+  if (isLoadingProductData) {
+    return (
+      <section className={styles.centeredScreenText}>
+        Loading product...
+      </section>
+    );
+  }
+
+  if (!productData || error) {
+    return (
+      <section className={styles.centeredScreenText}>
+        <p>Product not found!</p>
+        <Link href="/" passHref>
+          <Button text="Return to Home Page" />
+        </Link>
+      </section>
+    );
   }
 
   const imgWidth =

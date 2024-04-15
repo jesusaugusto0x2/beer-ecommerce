@@ -21,15 +21,17 @@ export const ProductList: FC<Props> = ({ searchValue }) => {
   );
 
   if (error) {
-    return <div>Error has ocurred!</div>;
+    return <div className={styles.centered}>Error has ocurred!</div>;
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className={styles.centered}>Loading...</div>;
   }
 
   if (!response) {
-    return <div>There are no products at the moment</div>;
+    return (
+      <div className={styles.centered}>There are no products at the moment</div>
+    );
   }
 
   return (
