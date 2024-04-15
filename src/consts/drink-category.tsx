@@ -1,7 +1,7 @@
-import Image from "next/image";
+import { Img } from "@/components";
 
 const ImageIcon = ({ src }: { src: string }) => (
-  <Image src={src} alt="btn-group-icon" width={20} height={20} />
+  <Img src={src} alt="btn-group-icon" width={20} height={20} />
 );
 
 export const DRINK_CATEGORIES = [

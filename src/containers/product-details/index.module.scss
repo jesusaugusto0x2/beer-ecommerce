@@ -9,10 +9,15 @@
     margin: 24px;
   }
 
-  img {
+  .imgWrapper {
     margin: 0 auto;
     margin-bottom: 24px;
     border-radius: 24px;
+    width: 225px;
+    background-color: #fff;
+    justify-content: center;
+    display: flex;
+    padding: 6px;
   }
 
   .description {

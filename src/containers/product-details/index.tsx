@@ -13,8 +13,9 @@ import { CurrencyUtils, ProductUtils } from "@/utils";
 import { ProductResponse, StockPriceResponse } from "@/models";
 import { fetcher } from "@/api";
 import { ENDPOINTS, REFRESH_INTERVAL } from "@/consts/api";
-import useSWR from "swr";
+import { DEFAULT_LARGE_IMAGE_WIDTH, IMAGE_WIDTH_MAP } from "@/consts";
 import Link from "next/link";
+import useSWR from "swr";
 import styles from "./index.module.scss";
 
 type TagItem = ComponentProps<typeof TagGroup>["items"][0];
@@ -50,6 +51,10 @@ export const ProductDetails: FC = () => {
     return <section>Product not found!</section>;
   }
 
+  const imgWidth =
+    IMAGE_WIDTH_MAP[ProductUtils.slugifyBrand(productData.product)]?.large ||
+    DEFAULT_LARGE_IMAGE_WIDTH;
+
   return (
     <section className={styles.ProductDetails}>
       <NavBar
@@ -61,12 +66,14 @@ export const ProductDetails: FC = () => {
         rightItem={<Button variant="default" icon={<DotsIcon />} />}
         title="Detail"
       />
-      <Img
-        src={productData.product.image}
-        width={240}
-        height={240}
-        alt={productData.product.image}
-      />
+      <div className={styles.imgWrapper}>
+        <Img
+          src={productData.product.image}
+          width={imgWidth}
+          height={240}
+          alt={productData.product.image}
+        />
+      </div>
       <div className={styles.description}>
         <div className={styles.titleSection}>
           <p>

@@ -10,6 +10,9 @@ const parseSkuToTagItem = (sku?: ProductSKU) => ({
   value: sku?.code || "",
 });
 
+const slugifyBrand = (product: Product) =>
+  product.brand.toLowerCase().replace(" ", "-");
+
 const parseSkuArrayToTagItems = (skus: ProductSKU[]) =>
   skus.map((sku) => parseSkuToTagItem(sku));
 
@@ -20,11 +23,9 @@ const generateProductEndpoint = (productId: string) => {
     return "";
   }
 
-  const slugifiedName = product.brand.toLowerCase().replace(" ", "-");
-
   return ENDPOINTS.productDetails
     .replace("{productId}", `${product.id}`)
-    .replace("{productName}", slugifiedName);
+    .replace("{productName}", slugifyBrand(product));
 };
 
 export const ProductUtils = {
@@ -32,4 +33,5 @@ export const ProductUtils = {
   parseSkuToTagItem,
   parseSkuArrayToTagItems,
   generateProductEndpoint,
+  slugifyBrand,
 };
