@@ -1,6 +1,7 @@
-import { Product, ProductSKU } from "@/models";
+import { Product, ProductSKU, StockPrice } from "@/models";
 import ProductData from "@/data/products";
 import { ENDPOINTS } from "@/consts/api";
+import StockPriceData from "@/data/stock-price";
 
 const getProductById = (productId: string): Product | undefined =>
   ProductData.find((p) => p.id === Number(productId));
@@ -28,10 +29,23 @@ const generateProductEndpoint = (productId: string) => {
     .replace("{productName}", slugifyBrand(product));
 };
 
+const getFirstSkuStock = (product: Product): StockPrice | undefined => {
+  const firstSku = product.skus.at(0);
+
+  if (!firstSku) {
+    return undefined;
+  }
+
+  return (StockPriceData as { [key: number]: {} })[
+    Number(firstSku.code)
+  ] as StockPrice;
+};
+
 export const ProductUtils = {
   getProductById,
   parseSkuToTagItem,
   parseSkuArrayToTagItems,
   generateProductEndpoint,
   slugifyBrand,
+  getFirstSkuStock,
 };

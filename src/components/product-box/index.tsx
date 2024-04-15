@@ -3,7 +3,7 @@ import { Product } from "@/models/product";
 import { Button } from "../button";
 import { PlusWhiteIcon } from "@/assets";
 import { Img } from "../img";
-import { ProductUtils } from "@/utils";
+import { CurrencyUtils, ProductUtils } from "@/utils";
 import { DEFAULT_SMALL_IMAGE_WIDTH, IMAGE_WIDTH_MAP } from "@/consts";
 import Link from "next/link";
 import styles from "./index.module.scss";
@@ -17,6 +17,8 @@ export const ProductBox: FC<Props> = ({ product }) => {
     IMAGE_WIDTH_MAP[ProductUtils.slugifyBrand(product)]?.small ||
     DEFAULT_SMALL_IMAGE_WIDTH;
 
+  const firstSku = ProductUtils.getFirstSkuStock(product);
+
   return (
     <div className={styles.ProductBox}>
       <h3>{product.brand}</h3>
@@ -27,7 +29,7 @@ export const ProductBox: FC<Props> = ({ product }) => {
         height={122}
       />
       <div className={styles.lowerSection}>
-        <p>$28.65</p>
+        <p>{CurrencyUtils.parseCentsToDollars(firstSku?.price)}</p>
         <Link passHref href={`/products/${product.id}`}>
           <Button icon={<PlusWhiteIcon />} />
         </Link>
