@@ -14,6 +14,7 @@ import { ProductResponse, StockPriceResponse } from "@/models";
 import { fetcher } from "@/api";
 import { ENDPOINTS, REFRESH_INTERVAL } from "@/consts/api";
 import { DEFAULT_LARGE_IMAGE_WIDTH, IMAGE_WIDTH_MAP } from "@/consts";
+import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import useSWR from "swr";
 import styles from "./index.module.scss";
@@ -109,9 +110,17 @@ export const ProductDetails: FC = () => {
         </div>
         <div className={styles.options}>
           <Button icon={<BagIcon />} variant="default" />
-          <Button text="Add to cart" />
+          <Button
+            text="Add to cart"
+            onClick={() =>
+              toast("Added!", {
+                icon: "🍺",
+              })
+            }
+          />
         </div>
       </div>
+      <Toaster />
     </section>
   );
 };

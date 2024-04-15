@@ -4,8 +4,8 @@ export default {
     price: 3587,
   },
   10166: {
-    stock: 456,
-    price: 2640,
+    stock: 470,
+    price: 4240,
   },
   10170: {
     stock: 6,
