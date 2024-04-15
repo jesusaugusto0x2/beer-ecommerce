@@ -6,12 +6,19 @@ import { ENDPOINTS } from "@/consts/api";
 import useSWR from "swr";
 import styles from "./index.module.scss";
 
-export const ProductList: FC = () => {
+type Props = {
+  searchValue: string;
+};
+
+export const ProductList: FC<Props> = ({ searchValue }) => {
   const {
     data: response,
     error,
     isLoading,
-  } = useSWR<ProductListResponse>(ENDPOINTS.productList, fetcher);
+  } = useSWR<ProductListResponse>(
+    `${ENDPOINTS.productList}?search=${searchValue}`,
+    fetcher
+  );
 
   if (error) {
     return <div>Error has ocurred!</div>;
